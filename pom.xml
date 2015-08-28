@@ -5,7 +5,7 @@
 
 	<groupId>com.massifsource.autoguru</groupId>
 	<artifactId>autoguru-dap</artifactId>
-	<version>0.1.2</version>
+	<version>0.1</version>
 	<packaging>jar</packaging>
 
 	<name>autoguru-dap</name>
@@ -52,6 +52,14 @@
 	</dependencies>
 	
 	<build>
+		<finalName>${project.name}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
