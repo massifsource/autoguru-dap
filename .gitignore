@@ -1,0 +1,16 @@
+/bin
+/build
+*/build
+/.gradle
+/.classpath
+/.project
+/.settings
+/.metadata
+/activemq-data
+.idea
+*.iml
+gradle-app.settings
+rebel.xml
+gradlew
+gradlew.bat
+gradle/
