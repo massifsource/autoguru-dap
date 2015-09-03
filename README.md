@@ -7,21 +7,6 @@ Application uses Maven for dependency management and builds.
 #### Compile and package
 
 ```mvn clean package```
- 
-#### Test
-Tests are disabled by default to speed-up builds, enable and run tests with the following command.
-
-```mvn clean test -Dmaven.test.skip=false```
-
-#### Run
- * Run using ```spring-boot-maven-plugin```
-```mvn clean boot:run```
- * Run using the built jar
- 
-```
-cd target
-java -jar autoguru-dap.jar
-```
 
 #### Build docker files and deploy to AWS
 
@@ -34,4 +19,20 @@ zip autoguru-dap.zip *
 ```
 
 Upload the zipped file to AWS beanstalk docker instance.
+ 
+### Test
+Tests are disabled by default to speed-up builds, enable and run tests with the following command.
+
+```mvn clean test -Dmaven.test.skip=false```
+
+### Run
+ * Run using ```spring-boot-maven-plugin```
+```mvn clean boot:run```
+ * Run using the built jar
+ 
+```
+cd target
+java -jar autoguru-dap.jar
+```
+
 
