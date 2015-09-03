@@ -51,7 +51,7 @@ public class DistrictServiceInfoController {
         return districtServiceInfoRepository.findByServiceId(serviceId, pageable);
     }
 
-    @RequestMapping(value = "/search/findByDistrictIdAndcServiceId")
+    @RequestMapping(value = "/search/findByDistrictIdAndServiceId")
     public Page<DistrictServiceInfo> findByDistrictIdAndServiceId(@RequestParam("districtId") Integer districtId, @RequestParam("serviceId") Integer serviceId, Pageable pageable) {
         LOGGER.debug("Retrieving all district_service_infos for serviceId {} and districtId {} and pageable {}", serviceId, districtId, pageable);
         return districtServiceInfoRepository.findByDistrictIdAndServiceId(districtId, serviceId, pageable);
