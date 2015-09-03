@@ -27,11 +27,11 @@ java -jar autoguru-dap.jar
 
 First boot2docker needs to be started.
 
-`
+```
 mvn clean package docker:build
 cd target/docker
 zip autoguru-dap.zip *
-`
+```
 
 Upload the zipped file to AWS beanstalk docker instance.
 
