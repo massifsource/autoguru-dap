@@ -1,44 +1,40 @@
-DROP TABLE IF EXISTS city;
+DROP TABLE IF EXISTS city CASCADE;
 CREATE TABLE city (
 	id	SERIAL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL
 );
 
-DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS category CASCADE;
 CREATE TABLE category (
 	id	SERIAL PRIMARY KEY,
 	name	VARCHAR(50) NOT NULL,
 	description TEXT
 );
 
-DROP TABLE IF EXISTS service;
+DROP TABLE IF EXISTS service CASCADE;
 CREATE TABLE service (
 	id	SERIAL PRIMARY KEY,
 	category_id int references category(id),
 	name	VARCHAR(50) NOT NULL,
 	description TEXT
 );
-INSERT INTO city(id, name) VALUES (1, 'Иркутск');
-INSERT INTO city(id, name) VALUES (2, 'Томск');
+CREATE INDEX service_idx_1 ON service(category_id);
 
-INSERT INTO category(id, name) VALUES (1, 'Помощь на дороге');
-INSERT INTO category(id, name) VALUES (2, 'ДТП');
-INSERT INTO category(id, name) VALUES (3, 'Автоинформатор');
+DROP TABLE IF EXISTS district CASCADE;
+CREATE TABLE district (
+	id	SERIAL PRIMARY KEY,
+	city_id int references city(id),
+	name	VARCHAR(50) NOT NULL
+);
+CREATE INDEX district_idx_1 ON district(city_id);
 
-INSERT INTO service(id, name, category_id) VALUES (1, 'Обслуживание', 3);
-INSERT INTO service(id, name, category_id) VALUES (2, 'Ремонт', 3);
-INSERT INTO service(id, name, category_id) VALUES (3, 'Диагностика', 3);
-INSERT INTO service(id, name, category_id) VALUES (4, 'Автозапчасти', 3);
-INSERT INTO service(id, name, category_id) VALUES (5, 'Аксессуары', 3);
-
-INSERT INTO service(id, name, category_id) VALUES (6, 'Аварийные Комиссары', 2);
-INSERT INTO service(id, name, category_id) VALUES (7, 'Эвакуатор/Буксировка', 2);
-INSERT INTO service(id, name, category_id) VALUES (8, 'Полезная информация', 2);
-
-INSERT INTO service(id, name, category_id) VALUES (9, 'Прокол Колеса', 1);
-INSERT INTO service(id, name, category_id) VALUES (10, 'Доставка Бензина', 1);
-INSERT INTO service(id, name, category_id) VALUES (11, 'Эвакуатор/Буксировка', 1);
-INSERT INTO service(id, name, category_id) VALUES (12, 'Аккамулятор/Отогрев', 1);
-INSERT INTO service(id, name, category_id) VALUES (13, 'Вскрытие Замка', 1);
-INSERT INTO service(id, name, category_id) VALUES (14, 'Трезвый Водитель', 1);
-INSERT INTO service(id, name, category_id) VALUES (15, 'Другое', 1);
+DROP TABLE IF EXISTS district_service_info CASCADE;
+CREATE TABLE district_service_info (
+	id	SERIAL PRIMARY KEY,
+	district_id int references district(id),
+	service_id int references service(id),
+	phone VARCHAR(20),
+	email VARCHAR(50),
+	integration_point VARCHAR(255)
+);
+CREATE UNIQUE INDEX district_service_info_uidx_1  ON district_service_info(district_id, service_id);

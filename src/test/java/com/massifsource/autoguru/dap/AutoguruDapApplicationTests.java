@@ -1,4 +1,9 @@
-package dap;
+/**
+ * Copyright 2015 MassifSource
+ *
+ * @author Nikolay Sarychev <nikolaysarychev@gmail.com>
+ */
+package com.massifsource.autoguru.dap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
