@@ -55,4 +55,10 @@ public class DistrictServiceInfoController {
         return districtServiceInfoRepository.findByDistrictIdAndServiceId(districtId, serviceId, pageable);
     }
 
+    @RequestMapping(value = "/search/findByServiceCategoryIdAndDistrictId")
+    public Page<DistrictServiceInfo> findByCategoryIdAndDistrictId( @RequestParam("serviceCategoryId") Integer serviceCategoryId, @RequestParam("districtId") Integer districtId, Pageable pageable) {
+        LOGGER.debug("Retrieving all district_service_infos for serviceCategoryId {} and districtId {} and pageable {}", serviceCategoryId, districtId, pageable);
+        return districtServiceInfoRepository.findByServiceCategoryIdAndDistrictId(serviceCategoryId, districtId, pageable);
+    }
+
 }

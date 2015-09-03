@@ -15,4 +15,5 @@ public interface DistrictServiceInfoRepository extends PagingAndSortingRepositor
     Page<DistrictServiceInfo> findByServiceId(Integer serviceId, Pageable pageable);
     Page<DistrictServiceInfo> findByDistrictId(Integer districtId, Pageable pageable);
     Page<DistrictServiceInfo> findByDistrictIdAndServiceId(Integer districtId, Integer serviceId, Pageable pageable);
+    Page<DistrictServiceInfo> findByServiceCategoryIdAndDistrictId(Integer serviceCategoryId, Integer serviceId, Pageable pageable);
 }

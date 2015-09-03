@@ -6,9 +6,12 @@
 package com.massifsource.autoguru.dap.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Entity(name = "district_service_info")
@@ -18,10 +21,12 @@ public class DistrictServiceInfo implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private Integer districtId;
-    private Integer serviceId;
     private String phone;
     private String email;
     private String integrationPoint;
+    @OneToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="service_id")
+    private Service service;
 
     public Integer getId() {
         return id;
@@ -37,14 +42,6 @@ public class DistrictServiceInfo implements Serializable {
 
     public void setDistrictId(Integer districtId) {
         this.districtId = districtId;
-    }
-
-    public Integer getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Integer serviceId) {
-        this.serviceId = serviceId;
     }
 
     public String getPhone() {
@@ -69,5 +66,13 @@ public class DistrictServiceInfo implements Serializable {
 
     public void setIntegrationPoint(String integrationPoint) {
         this.integrationPoint = integrationPoint;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
     }
 }
