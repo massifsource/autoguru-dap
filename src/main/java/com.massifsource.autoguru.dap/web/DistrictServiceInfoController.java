@@ -6,9 +6,7 @@
 package com.massifsource.autoguru.dap.web;
 
 import com.massifsource.autoguru.dap.model.DistrictServiceInfo;
-import com.massifsource.autoguru.dap.model.Service;
 import com.massifsource.autoguru.dap.repository.DistrictServiceInfoRepository;
-import com.massifsource.autoguru.dap.repository.ServiceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
